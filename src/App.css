@@ -1,38 +1,646 @@
-.App {
-  text-align: center;
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  padding: 12rem 6rem; 
+  text-align: left;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-image {
+  position: absolute;
+  align-self: anchor-center;
+  top: 10%;
+  right: 0;
+  left: 70%;
+  height: 50%;
+  max-width: 100%;
+  object-fit: contain;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.header .title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: left;               /* Align the title to the left */
+}
+
+.header .navbar {
+  display: flex;
+  justify-content: space-around;  
+  flex: 1;                       
+}
+
+.header .navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;             /* Center align text in each link */
+}
+
+
+/* Light Mode */
+.light-mode {
+  background-color: #ffeaec; /* Light background */
+  color: #690031; 
+}
+
+.light-mode .navbar {
+  background-color: #ffeaec;
+  color: #690031;
+}
+
+.light-mode .navbar a {
+  color: #690031;
+}
+
+.light-mode .navbar-right a:hover {
+  background-color: #690031;
+  color: #fff;
+}
+
+.light-mode .resume-btn {
+  background-color: #690031;
+  color: #fff;
+}
+
+.light-mode .resume-btn:hover {
+  background-color: #8a0044;
+}
+
+.light-mode .project-card {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.light-mode .project-link {
+  color: #690031;
+}
+
+.light-mode .social-icons .social-icon {
+  filter: brightness(0) saturate(100%);
+}
+
+.light-mode .social-icons .social-icon:hover {
+  transform: scale(1.15);
+}
+
+
+/* Dark Mode: Space Theme */
+.dark-mode {
+  background-color: #0d0d0d;  
+  color: #e0e0e0;            
+}
+
+/* Navbar */
+.dark-mode .navbar {
+  background-color: #1a1a1a;  
+  color: #e0e0e0;
+}
+
+.dark-mode .navbar a {
+  color: #e0e0e0;
+}
+
+.dark-mode .navbar a:hover {
+  background-color: #262626;
+  color: #00e5ff; /* Bright cyan accent */
+}
+
+/* Buttons */
+.dark-mode .resume-btn {
+  background-color: #00e5ff; /* Cyan */
+  color: #000;
+}
+
+.dark-mode .resume-btn:hover {
+  background-color: #00bcd4; 
+}
+.dark-mode .contact-form button{
+  background-color: #00e5ff; 
+  color: #000;
+}
+.dark-mode .contact-form buttton:hover {
+  background-color: #00bcd4; /* Soft teal */
+}
+
+
+.timeline {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* The line that runs vertically */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 2px;
+  background-color: #690031;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* The dot representing each timeline item */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background-color: #690031;
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+
+.timeline-item.left {
+  flex-direction: row-reverse; 
+}
+.timeline-item.right {
+  flex-direction: row; 
+}
+
+/* Absolute positioning for dates */
+.timeline-item.left .timeline-date {
+  position: absolute;
+  left: calc(50% - 170px); /* Move the date left */
+  z-index: 2;
+}
+
+.timeline-item.right .timeline-date {
+  position: absolute;
+  right: calc(50% - 170px); /* Move the date right */
+  z-index: 2;
+}
+
+/* Content box styling */
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #fff;  /* Box only for content */
+  border-radius: 10px;
+  width: 45%;  /* Content width */
+  text-align: left;
+}
+
+/* Date styling */
+.timeline-date {
+  color: #690031;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading and Paragraph styling */
+.timeline-item h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.timeline-item p {
+  font-size: 1rem;
+}
+
+/* Bullet Points Styling */
+.bullet-points {
+  list-style-type: disc;
+  margin-left: 20px; /* Ensures proper alignment for bullet points */
+  padding-left: 0; /* Removes any additional padding */
+  font-size: 1rem;
+  color: #333;
+  text-align: left; 
+  
+}
+
+.bullet-points li {
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-dot {
+    align-self: center;
+  }
+
+  .timeline-item.left .content,
+  .timeline-item.right .content {
+    text-align: left;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+/* Optional Dark Mode Support */
+.dark-mode .timeline::before {
+  background: #00e5ff;
+}
+.dark-mode .timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background-color: #00e5ff;
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.dark-mode .timeline-item::before {
+  background: #00e5ff;
+  box-shadow: 0 0 0 2px #00e5ff;
+}
+
+.dark-mode .timeline-content {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.dark-mode .timeline-date {
+  color: #00e5ff;
+}
+.dark-mode .content {
+  background-color: rgba(255, 255, 255, 0.1);  /* Dark background for content box */
+  color: #f0f0f0;  /* Light text color */
+}
+
+.dark-mode .bullet-points {
+  color: #f0f0f0;
+}
+
+.dark-mode .bullet-points li {
+  color: #f0f0f0;
+}
+
+
+/* Project Cards */
+.dark-mode .project-card {
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle card background */
+}
+
+.dark-mode .project-link {
+  background-color: #00bcd4; /* Bright cyan */
+  color: #121212; /* Dark background for contrast */
+}
+
+.dark-mode .project-link:hover {
+  background-color: #0097a7; /* Slightly deeper cyan */
+  color: #ffffff; /* White text on hover */
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3); /* Soft glow effect */
+  transform: scale(1.05);
+}
+
+
+/* Contact Section */
+.dark-mode .contact-section {
+  background-color: #2d2b2b;
+  color: #e0e0e0;
+}
+
+/* Social Icons */
+.dark-mode .social-icons .social-icon {
+  filter: brightness(1.3);
+}
+
+.dark-mode .social-icons .social-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Optional: Animated Font color in dark mode */
+.dark-mode .animated-font {
+  color: #f06292; /* Pink pop on black */
+}
+
+
+
+/* Common Navbar Styles */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 1rem 2rem;
+  font-weight: bold;
+}
+.navbar-left {
+  position: absolute;
+  left: 0; 
+  top: 50%; 
+  transform: translateY(-50%); /* Ensures the logo is perfectly centered vertically */
+  margin-left: 10px; /* Optional: Adds a little space from the very edge */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  margin-left: auto;
+  color:#690031
+}
+.navbar-left a {
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-right a:hover {
+  border-radius: 5px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.typing-left {
+  text-align: left;
+  width: 100%;
+  max-width: max-content;
+  margin-top: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.typing-slide {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #888;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  animation: typing 3s steps(30, end), blink 1s step-end infinite;
 }
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent }
+  50% { border-color: #888 }
+}
+
+
+
+/* Hero Content Styles */
+.hero-content {
+  color: #000;
+  margin-top: 5rem;
+  align-items: left;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  align-items: left;
+}
+
+.hero-content .social-icons {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: left;
+  gap: 1.5rem;
+}
+
+.hero-content .social-icons a {
+  display: inline-block;
+}
+
+.hero-content .social-icons .social-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) saturate(100%);
+}
+
+
+/* Section Styles */
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section-text {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Skill Cards */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.skill-card {
+  
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.light-mode .skill-card {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #690031;
+}
+
+.dark-mode .skill-card {
+  background-color: #b1dfe4;
+  color: #0d0b0c;
+}
+
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Project Cards */
+.project-card {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 800px;
+  border-radius: 12px;
+  text-align: left;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.project-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-link {
+  color: #690031;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.project-card:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.project-link:hover {
+  color: #8a0044;
+}
+
+/* Default styling */
+.project-link {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode */
+.light-mode .project-link {
+  background-color: #ffeaec;
+  color: #690031; /* text color to match light theme font */
+}
+
+
+/* Optional: hover effects */
+.light-mode .project-link:hover {
+  background-color: #fdd6db;
+}
+
+
+
+/* Contact Section */
+.contact-section {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: rgba(230, 16, 16, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: inherit;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+}
+
+.contact-form button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #8a0044;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #690031;
+}
+
+
+.toggle-btn {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+

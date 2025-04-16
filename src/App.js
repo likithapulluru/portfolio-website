@@ -42,7 +42,7 @@
         }, typingDuration + pauseAfterTyping);
       
         return () => clearTimeout(interval);
-      }, [currentRole]);
+      }, [roles.length]);
       
 
       useEffect(() => {
@@ -235,7 +235,7 @@
                     <li>Built a Movie Search App using React.js and TMDb API to fetch real-time movie data</li>
                     <li>Used JavaScript and Axios for API interactions</li>
                   </ul>
-                  <a href="#" target="_blank" className="project-link">View Project</a>
+                  <a href="/_" target="_blank" className="project-link">View Project</a>
                 </div>
 
                 <div className="project-card">
@@ -246,7 +246,7 @@
                     <li>Performed backend API testing with REST Assured and validated database consistency</li>
                     <li>Executed tests on emulators and real Android devices</li>
                   </ul>
-                  <a href="#" target="_blank" className="project-link">View Project</a>
+                  <a href="/_" target="_blank" className="project-link">View Project</a>
                 </div>
               </div>
             </section>

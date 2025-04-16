@@ -45,6 +45,7 @@
       }, [roles.length]);
       
 
+      
       useEffect(() => {
         const revealElements = document.querySelectorAll('.reveal');
         const handleScroll = () => {

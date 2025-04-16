@@ -1,4 +1,6 @@
     import React, { useState, useEffect } from 'react';
+    import { Typewriter } from "react-simple-typewriter";
+    import { FaBars, FaTimes } from 'react-icons/fa';
     import './App.css';
 
 
@@ -30,22 +32,8 @@
 
     function App() {
       const [darkMode, setDarkMode] = useState(false);
-      const roles = ["Software Engineer", "SDET", "QA Analyst"];
-      const [currentRole, setCurrentRole] = useState(0);
+      const [menuOpen, setMenuOpen] = useState(false);
 
-      useEffect(() => {
-        const typingDuration = 3000; 
-        const pauseAfterTyping = 1000; // pause 1s after typing
-      
-        const interval = setTimeout(() => {
-          setCurrentRole((prevRole) => (prevRole + 1) % roles.length);
-        }, typingDuration + pauseAfterTyping);
-      
-        return () => clearTimeout(interval);
-      }, [roles.length]);
-      
-
-      
       useEffect(() => {
         const revealElements = document.querySelectorAll('.reveal');
         const handleScroll = () => {
@@ -64,6 +52,7 @@
         handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
+    
 
       return (
         <div className={darkMode ? 'dark-mode' : 'light-mode'}>
@@ -72,7 +61,11 @@
               <div className="navbar-left">
                 <a href="/_">likithค pนllนrน</a>
               </div>
-              <div className="navbar-right">
+              <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+
+        <div className={`navbar-right ${menuOpen ? 'open' : ''}`}>
                 <a href="#about">About Me</a>
                 <a href="#skills">Skills</a>
                 <a href="#Education and Experience">Education</a>
@@ -91,14 +84,17 @@
             <h1 className="typing-effect">
     Hi, I am <span className="gradient-name">Likitha Pulluru</span>
   </h1>
-
-
-
-              <div className="rotating-roles typing-left">
-      <span className="typing-slide" key={roles[currentRole]}>
-        {roles[currentRole]}
-      </span>
-    </div>
+  <h2 className="typing">
+            <Typewriter
+              words={['Software Engineer', 'SDET', 'QA Analyst']}
+              loop={false}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </h2>
 
 
               <div className="social-icons">
@@ -226,7 +222,7 @@
                     <li>Implemented student authentication, enrollment tracking, and RESTful APIs</li>
                     <li>Used MySQL database for managing students and courses</li>
                   </ul>
-                  <a href="https://likitha-movie-search-app.netlify.app/" target="_blank" rel="noreferrer" className="project-link">View Project</a>
+                  <a href="/_" target="_blank" rel="noreferrer" className="project-link">View Project</a>
                 </div>
 
                 <div className="project-card">
@@ -236,7 +232,7 @@
                     <li>Built a Movie Search App using React.js and TMDb API to fetch real-time movie data</li>
                     <li>Used JavaScript and Axios for API interactions</li>
                   </ul>
-                  <a href="/_" target="_blank" className="project-link">View Project</a>
+                  <a href="https://likitha-movie-search-app.netlify.app/" target="_blank" className="project-link">View Project</a>
                 </div>
 
                 <div className="project-card">

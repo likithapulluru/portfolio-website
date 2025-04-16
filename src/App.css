@@ -62,6 +62,14 @@ body, html {
   text-align: center;             /* Center align text in each link */
 }
 
+.hero-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
 
 /* Light Mode */
 .light-mode {
@@ -255,6 +263,30 @@ body, html {
   margin-bottom: 10px;
   font-weight: 400;
 }
+
+/* Initially hide the hamburger menu */
+.hamburger-menu {
+  display: none;
+}
+
+/* Show hamburger menu only on mobile screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Show the hamburger menu */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hamburger-menu div {
+    width: 30px;
+    height: 3px;
+    background-color: #690031;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+}
+
 /* Responsive */
 @media screen and (max-width: 768px) {
   .timeline::before {
@@ -388,13 +420,9 @@ body, html {
   margin-left: auto;
   color:#690031
 }
+
 .navbar-left a {
   text-decoration: none;
-}
-
-.navbar-right {
-  display: flex;
-  gap: 1rem;
 }
 
 .navbar a {
@@ -424,18 +452,6 @@ body, html {
   color: var(--text-color);
   animation: typing 3s steps(30, end), blink 1s step-end infinite;
 }
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  0%, 100% { border-color: transparent }
-  50% { border-color: #888 }
-}
-
-
 
 /* Hero Content Styles */
 .hero-content {

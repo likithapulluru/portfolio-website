@@ -33,6 +33,7 @@
     function App() {
       const [darkMode, setDarkMode] = useState(false);
       const [menuOpen, setMenuOpen] = useState(false);
+      
 
       useEffect(() => {
         const revealElements = document.querySelectorAll('.reveal');
@@ -59,23 +60,24 @@
           <header className="header">
             <nav className={`navbar ${darkMode ? 'dark' : 'light'}`}>
               <div className="navbar-left">
-                <a href="/_">likithค pนllนrน</a>
+                <a href="https://likitha-pulluru-portfolio.netlify.app/">likithค pนllนrน</a>
               </div>
               <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </div>
+  {menuOpen ? <FaTimes /> : <FaBars />}
+</div>
 
-        <div className={`navbar-right ${menuOpen ? 'open' : ''}`}>
-                <a href="#about">About Me</a>
-                <a href="#skills">Skills</a>
-                <a href="#Education and Experience">Education</a>
-                <a href="#Education and Experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <button onClick={() => setDarkMode(!darkMode)} className="toggle-btn" title="Toggle Dark Mode">
-                  {darkMode ? '🌞' : '🌙'}
-                </button>
-              </div>
+              <div className={`navbar-right ${menuOpen ? 'open' : ''}`}>
+  <a href="#about">About Me</a>
+  <a href="#skills">Skills</a>
+  <a href="#Education and Experience">Education</a>
+  <a href="#Education and Experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <button onClick={() => setDarkMode(!darkMode)} className="toggle-btn" title="Toggle Dark Mode">
+    {darkMode ? '🌞' : '🌙'}
+  </button>
+</div>
+
             </nav>
           </header>
 
@@ -215,14 +217,15 @@
               <h2 className="section-title">Projects</h2>
               <div className="projects-list">
                 <div className="project-card">
-                  <h3 className="project-title">Student Course Enrollment System</h3>
-                  <p className="project-tech">Java (Spring Boot), MySQL, React.js</p>
+                  <h3 className="project-title">Currency Converter application</h3>
+                  <p className="project-tech">Java (Spring Boot),  REST API Integration, React.js</p>
                   <ul>
-                    <li>Developed a Course Enrollment System with Spring Boot and React.js</li>
-                    <li>Implemented student authentication, enrollment tracking, and RESTful APIs</li>
-                    <li>Used MySQL database for managing students and courses</li>
+                    <li>Developed a Currency Converter app using Spring Boot and React.js with real-time exchange rate integration</li>
+                    <li>Implemented RESTful APIs to fetch supported currencies and convert amounts dynamically</li>
+                    <li>Integrated external API (exchangerate.host) for accurate, real-time currency exchange rates</li>
+                    <li>Built a responsive React frontend with dynamic dropdowns and live conversion results</li>
                   </ul>
-                  <a href="/_" target="_blank" rel="noreferrer" className="project-link">View Project</a>
+                  <a href="https://github.com/likithapulluru/currency-converter" target="_blank" rel="noreferrer" className="project-link">View Project</a>
                 </div>
 
                 <div className="project-card">

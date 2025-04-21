@@ -21,9 +21,6 @@ body, html {
   padding: 12rem 6rem; 
   text-align: left;
   transition: background-image 0.5s ease-in-out;
-}
-
-.hero {
   position: relative;
   overflow: hidden;
 }
@@ -151,9 +148,73 @@ body, html {
   background-color: #00e5ff; 
   color: #000;
 }
-.dark-mode .contact-form buttton:hover {
+.dark-mode .contact-form button:hover {
   background-color: #00bcd4; /* Soft teal */
 }
+
+
+/* Base navbar styles */
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Navbar links */
+.navbar-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: max-height 0.4s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    margin-left: auto;
+    padding-right: 10px;
+  }
+
+  .navbar-right {
+    position: absolute;
+    top: 60px;
+    right: 10px; /* position a bit away from the edge */
+    background-color: white;
+    flex-direction: column;
+    align-items: flex-end; /* aligns items inside the box to the right */
+    width: 200px; /* set a fixed width for the dropdown */
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    z-index: 10;
+  }
+
+  .navbar-right.open {
+    max-height: 300px;
+    padding: 10px 15px;
+    overflow-y: auto;
+  }
+
+  .dark-mode .navbar-right.open {
+    background-color: black;
+  }
+  .navbar-right a,
+  .navbar-right button {
+    padding: 10px 0;
+    width: 100%;
+    text-align: right; /* align text to the right */
+  }
+}
+
 
 
 .timeline {
@@ -163,6 +224,7 @@ body, html {
   flex-direction: column;
   gap: 30px;
 }
+
 
 /* The line that runs vertically */
 .timeline::before {
@@ -262,55 +324,6 @@ body, html {
 .bullet-points li {
   margin-bottom: 10px;
   font-weight: 400;
-}
-
-/* Initially hide the hamburger menu */
-.hamburger-menu {
-  display: none;
-}
-
-/* Show hamburger menu only on mobile screens (max-width: 768px) */
-@media screen and (max-width: 768px) {
-  .hamburger-menu {
-    display: block; /* Show the hamburger menu */
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .hamburger-menu div {
-    width: 30px;
-    height: 3px;
-    background-color: #690031;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .timeline::before {
-    left: 8px;
-  }
-
-  .timeline-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .content {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .timeline-dot {
-    align-self: center;
-  }
-
-  .timeline-item.left .content,
-  .timeline-item.right .content {
-    text-align: left;
-  }
 }
 
 
@@ -484,6 +497,64 @@ body, html {
   filter: brightness(0) saturate(100%);
 }
 
+/* Responsive Adjustments for Mobile */
+@media (max-width: 768px) {
+  .hero-content {
+    margin-top: -4rem;
+    padding: 0 15px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-content h1 {
+    font-size: 1rem;
+  }
+
+  .hero-content .social-icons {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px; /* move the vertical line to the left side */
+    transform: none;
+  }
+
+  .timeline-item {
+    flex-direction: row; /* stack horizontally */
+    align-items: flex-start;
+  }
+
+  .timeline-dot {
+    left: -6px; /* align dot with the vertical line */
+    transform: none;
+  }
+  .dark-mode .timeline-dot {
+    left: -6px; /* align dot with the vertical line */
+    transform: none;
+  }
+
+  .timeline-date {
+    position: relative;
+    left: -60px;
+    right: 0;
+    margin-left: 20px; /* add margin to not overlap dot */
+    margin-bottom: 0.5rem;
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 40px; /* space from the dot and vertical line */
+    text-align: left;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    flex-direction: row;
+  }
+}
 
 /* Section Styles */
 .section {

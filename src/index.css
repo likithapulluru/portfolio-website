@@ -100,6 +100,20 @@ body {
   transition: background-color 0.3s ease;
 }
 
+@media (max-width: 768px) {
+.resume-btn {
+  padding: 6px 6px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--btn-color);
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+}
+
+
 .resume-btn:hover {
   background-color: var(--btn-hover-color);
 }
